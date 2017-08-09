@@ -43,3 +43,18 @@ h2 {
   background-color: red;
   border: 3px solid black;
 }
+
+.defender {
+  background-color: black;
+  color: white;
+  border: 3px solid green;
+}
+
+button {
+  background-color: black;
+  color: white;
+  font-family: monospace, serif;
+  font-size: 1.2em;
+  border: 2px solid white;
+  /*padding: 10px;*/
+}
