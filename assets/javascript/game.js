@@ -6,23 +6,23 @@ function Character(name, id, healthPoints, attackPower, counterAttackPower, imgP
   this.attackPower = attackPower;
   this.baseAttackPower = attackPower;
   this.counterAttackPower = counterAttackPower;
-  this.imgPath = "assets/images/" + imgPath + ".jpg";
+  this.imgPath = "assets/images/" + imgPath + ".png";
   this.element = null;
 }
 
-var obiWanKenobi = new Character("Obi-Wan Kenobi", "obi", 120, 8, 12, "obi-wan-kenobi");
-var lukeSkywalker = new Character("Luke Skywalker", "luke", 100, 15, 8, "luke-skywalker");
-var darthSidious = new Character("Darth Sidious", "sidious", 150, 6, 15, "darth-sidious");
-var darthMaul = new Character("Darth Maul", "maul", 180, 3, 25, "darth-maul");
+var pikachu = new Character("Pikachu", "pikachu", 120, 8, 12, "pikachu");
+var bulbasaur = new Character("Bulbasaur", "bulbasaur", 100, 15, 8, "bulbasaur");
+var charizard = new Character("Charizard", "charizard", 150, 6, 15, "charizard");
+var squirtle = new Character("Squirtle", "squirtle", 180, 3, 25, "squirtle");
 
-var characters = [obiWanKenobi, lukeSkywalker, darthSidious, darthMaul];
+var characters = [pikachu, bulbasaur, charizard, squirtle];
 
-var $obi = $("<div>");
-var $luke = $("<div>");
-var $sidious = $("<div>");
-var $maul = $("<div>");
+var $pikachu = $("<div>");
+var $bulbasaur = $("<div>");
+var $charizard = $("<div>");
+var $squirtle = $("<div>");
 
-var charElements = [$obi, $luke, $sidious, $maul];
+var charElements = [$pikachu, $bulbasaur, $charizard, $squirtle];
 
 //dynamically create jquery elements for each character
 for (var i = 0; i < characters.length; i++) {
@@ -63,6 +63,11 @@ function Game() {
 
 var game = new Game();
 
+$("#your_character").hide();
+$("#enemies_available").hide();
+$("#fight_section").hide();
+$("#defender_section").hide();
+$("#message").hide();
 $("#restart").hide();
 
 
@@ -72,17 +77,17 @@ $(".char-container").on("click", function(event) {
 
     //whichever character is picked, assign game.player to that character
     switch ($(this).attr("id")) {
-      case "obi":
-        game.player = obiWanKenobi;
+      case "pikachu":
+        game.player = pikachu;
         break;
-      case "luke":
-        game.player = lukeSkywalker;
+      case "bulbasaur":
+        game.player = bulbasaur;
         break;
-      case "sidious":
-        game.player = darthSidious;
+      case "charizard":
+        game.player = charizard;
         break;
-      case "maul":
-        game.player = darthMaul;
+      case "squirtle":
+        game.player = squirtle;
         break;
     }
 
@@ -101,6 +106,11 @@ $(".char-container").on("click", function(event) {
       $("#enemies").append(game.defenders[i].element);
     }
 
+    //show the your_character and enemies_available divs
+    $("#your_character").show();
+    $("#enemies_available").show();
+    $("#character_select").hide();
+
   }
 
 });
@@ -111,20 +121,22 @@ $("#enemies").on("click", ".enemy", function(event) {
   if (game.state === 'defender selection') {
 
     $("#message p").text("");
+    $("#message").show();
+    $("#fight_section").show();
 
     //assign game.currentDefender to the chosen character
     switch ($(this).attr("id")) {
-      case "obi":
-        game.currentDefender = obiWanKenobi;
+      case "pikachu":
+        game.currentDefender = pikachu;
         break;
-      case "luke":
-        game.currentDefender = lukeSkywalker;
+      case "bulbasaur":
+        game.currentDefender = bulbasaur;
         break;
-      case "sidious":
-        game.currentDefender = darthSidious;
+      case "charizard":
+        game.currentDefender = charizard;
         break;
-      case "maul":
-        game.currentDefender = darthMaul;
+      case "squirtle":
+        game.currentDefender = squirtle;
         break;
     }
  
@@ -134,6 +146,8 @@ $("#enemies").on("click", ".enemy", function(event) {
     game.currentDefender.element.removeClass("enemy");
     game.currentDefender.element.addClass("defender");
     
+    $("#defender_section").show();
+
   }
 
 });
@@ -165,10 +179,16 @@ $("#attack").on("click", function(event) {
         game.state = "over";
 
         $("#message p").text("You won! GAME OVER!!!");
+        $("#enemies_available").hide();
+        $("#defender_section").hide();
+        $("#fight_section").hide();
 
       } else {
 
         game.state = "defender selection";
+
+        $("#defender_section").hide();
+        // $("#message").hide();
 
         $("#message p").text("You have defeated " + game.currentDefender.name + 
           "! Choose another enemy.");
@@ -188,6 +208,9 @@ $("#attack").on("click", function(event) {
         game.state = "over";
 
         $("#message p").text("You have been defeated...GAME OVER!!!");
+        $("#enemies_available").hide();
+        $("#your_character").hide();
+        $("#fight_section").hide();
 
       } else {
 
@@ -230,7 +253,10 @@ $("#restart").on("click", function(event) {
   }
 
   $("#message p").text("");
-
+  $("#defender_section").hide();
+  $("#message").hide();
+  $("#your_character").hide();
+  $("#character_select").show();
   $("#restart").hide();
 
 });

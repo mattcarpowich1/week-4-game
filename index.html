@@ -2,27 +2,46 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Starwars RPG Game</title>
+    <title>Pokemon RPG</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
   <body>
 
   <header>
-    <h1>Star Wars RPG!</h1>
+    <h1>Pokemon RPG!</h1>
   </header>
 
   <section id="character_select">
+    <h2>Select Your Pokemon!</h2>
     <div id="characters" class="row">
       <!-- initially append character images here -->
     </div>
   </section>
 
-  <section id="your_character">
-    <h2>Your Character</h2>
-    <div id="you" class="row">
-      <!-- append your character here once he is selected -->
-    </div>
+  <div id="fight_row">
+    <section id="your_character">
+      <h2>Your Character</h2>
+      <div id="you" class="row">
+        <!-- append your character here once he is selected -->
+      </div>
+    </section>
+
+    <section id="message">
+      <p></p>
+    </section>
+
+    <section id="defender_section">
+      <h2>Defender</h2>
+      <div id="defender" class="row">
+        <!-- append defender here once defender is selected -->
+      </div>
+    </section>
+  </div>
+
+  <section id="fight_section">
+    <!-- <h2>Fight Section</h2> -->
+    <button type="button" id="attack" class="btn">Attack</button>
   </section>
 
   <section id="enemies_available">
@@ -32,21 +51,6 @@
     </div>
   </section>
 
-  <section id="fight_section">
-    <h2>Fight Section</h2>
-    <button type="button" id="attack" class="btn">Attack</button>
-  </section>
-
-  <section id="defender_section">
-    <h2>Defender</h2>
-    <div id="defender" class="row">
-      <!-- append defender here once defender is selected -->
-    </div>
-  </section>
-
-  <section id="message">
-    <p></p>
-  </section>
 
   <section id="restart_section">
     <button type="button" id="restart" class="btn">Restart Game</button>

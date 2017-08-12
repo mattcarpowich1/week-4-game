@@ -1,6 +1,9 @@
 body {
   font-family: monospace, serif;
-  background-image: url("../images/x-wing.jpg");
+  background-color: #474747;
+  /*background-image: url("../images/poke.jpg");*/
+  /*background-position: center;*/
+  color: white;
 }
 
 header {
@@ -15,10 +18,16 @@ header {
 h1 {
   font-size: 3em;
   margin-right: 80px;
+  color: black;
 }
 
 h2 {
   font-size: 2em;
+  margin: 20px 0px 20px 0px;
+}
+
+img {
+  margin: 10px 0px 10px 0px;
 }
 
 .row {
@@ -28,33 +37,67 @@ h2 {
   align-items: center;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /*border: 2px solid white;*/
+}
+
 .char-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  /*background-color: white;*/
   padding: 0px 10px 0px 10px;
-  border: 3px solid green;
+  /*border: 3px solid green;*/
   margin: 0px 2px 0px 2px;
 }
 
+#fight_row {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#enemies_available h2 {
+  color: #ffdf44;
+}
+
 .enemy {
-  background-color: red;
-  border: 3px solid black;
+  color: #ffdf44;
+  /*background-color: red;*/
+  /*border: 3px solid black;*/
+}
+
+#defender_section h2 {
+  color: #db4141;
 }
 
 .defender {
-  background-color: black;
+  color: #db4141;
+  /*background-color: black;*/
+  /*color: white;*/
+  /*border: 3px solid green;*/
+}
+
+
+#message {
   color: white;
-  border: 3px solid green;
+  width: 300px;
+  font-size: 1.5em;
 }
 
 button {
-  background-color: black;
+  background-color: #2e9b4f;
   color: white;
   font-family: monospace, serif;
   font-size: 1.2em;
   border: 2px solid white;
-  /*padding: 10px;*/
+  padding: 10px 60px 10px 60px;
 }
